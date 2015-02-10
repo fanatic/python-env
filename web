@@ -4,13 +4,13 @@ import json
 from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
 
 port = int(sys.argv[1])
-print "No crash"
 
 class MyRequestHandler(BaseHTTPRequestHandler):
   def do_GET(self):
     self.send_response(200)
     self.send_header("Content-type", "application/json")
     self.end_headers()
+    self.wfile.write("Sick beans\n")
     self.wfile.write(json.dumps(dict(os.environ), indent=2))
     return
 
